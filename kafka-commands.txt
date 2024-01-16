@@ -1,0 +1,16 @@
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+bin\windows\kafka-server-start.bat config\server.properties
+
+Create new topic 
+>bin\windows\kafka-topics.bat --create --topic user-topic --bootstrap-server localhost:9092
+
+Produce new topic 
+bin\windows\kafka-console-producer.bat --topic user-topic --bootstrap-server localhost:9092
+
+Consuming message
+bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+
+Producer configuration
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
